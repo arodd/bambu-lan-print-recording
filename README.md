@@ -306,6 +306,9 @@ export FFMPEG_EXTRA_ARGS='-movflags +frag_keyframe+empty_moov'
 - If the printer uses a self‑signed certificate, either:
   - Set `MQTT_INSECURE_TLS=true` **(less secure)**, or
   - Supply a proper CA PEM file via `MQTT_CA_FILE` **(preferred)**.
+```bash
+openssl s_client -showcerts -connect <printer ip>:8883 </dev/null | sed -n -e '/-.BEGIN/,/-.END/ p' > blcert.pem
+```
 - Verify the printer is reachable on port `8883`.
 
 **Authentication failures**
